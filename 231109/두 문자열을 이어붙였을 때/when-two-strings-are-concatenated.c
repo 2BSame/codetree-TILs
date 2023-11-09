@@ -3,7 +3,7 @@
 int main() {
     // 여기에 코드를 작성해주세요.
     char arr[2][100];
-    char std[2][100];
+    char std[2][200];
     int i=0;
     for(i=0;i<2;i++){
         scanf("%s",arr[i]);
