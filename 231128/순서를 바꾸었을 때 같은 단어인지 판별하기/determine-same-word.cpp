@@ -13,7 +13,7 @@ int main() {
     sort(str1.begin(), str1.end());
     sort(str2.begin(), str2.end());
 
-    if(str.compare(str2)==0)
+    if(str1.compare(str2)==0)
         cout<<"Yes";
     else
         cout<<"No";
