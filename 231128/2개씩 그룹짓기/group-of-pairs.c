@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 비교 함수 선언
+int compare(const void *a, const void *b);
+
 // 그룹의 최소 합과 최대 합을 찾는 함수
 void find_min_max_sum(int *nums, int n, int *min_sum, int *max_sum) {
     *min_sum = INT_MAX;
@@ -26,7 +29,7 @@ int minimize_max_group_sum(int N, int *elements) {
     return max_sum;
 }
 
-// 비교 함수
+// 비교 함수 정의
 int compare(const void *a, const void *b) {
     return (*(int *)a - *(int *)b);
 }
