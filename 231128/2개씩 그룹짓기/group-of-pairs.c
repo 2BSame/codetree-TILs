@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 // 비교 함수 선언
 int compare(const void *a, const void *b);
