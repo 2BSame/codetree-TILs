@@ -17,7 +17,7 @@ class num{
 };
 num am[MAX];
 bool cmp(num a,num b){
-    return make_tuple(a.h, a.w, a.m) > make_tuple(b.h, b.w, b.m);
+    return make_tuple(a.h, a.w, b.m) > make_tuple(b.h, b.w, a.m);
 }
 int main() {
     // 여기에 코드를 작성해주세요.
