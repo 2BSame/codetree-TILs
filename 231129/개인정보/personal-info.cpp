@@ -8,8 +8,8 @@ class cc{
     public:
     string str;
     int h;
-    double w;
-    cc(string str,int h,double w){
+    string w;
+    cc(string str,int h,string w){
         this->str=str;
         this->h=h;
         this->w=w;
@@ -28,7 +28,7 @@ int main() {
     for(int i=0;i<MAX;i++){
         string str;
         int h;
-        double w;
+        string w;
         cin>>str>>h>>w;
         cun[i]=cc(str,h,w);
     }
