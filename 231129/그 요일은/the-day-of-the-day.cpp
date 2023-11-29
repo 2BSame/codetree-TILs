@@ -1,47 +1,39 @@
 #include <iostream>
-#include <string>
+#include <ctime>
 
 using namespace std;
 
-int count_occurrences(int m1, int d1, int m2, int d2, const string& start_day) {
-    int days_in_month[] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    string days_of_week[] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-
-    int start_index = 0;
-    for (int i = 0; i < 7; ++i) {
-        if (days_of_week[i] == start_day) {
-            start_index = i;
-            break;
-        }
-    }
-
-    int total_days = 0;
-    for (int month = m1; month <= m2; ++month) {
-        int end_day = (month != m2) ? days_in_month[month] : d2;
-        for (int day = 1; day <= end_day; ++day) {
-            if (day == d1 && month == m1) {
-                total_days = (total_days + start_index) % 7;
-            }
-            if (total_days % 7 == 0) {
-                start_index = (start_index + 1) % 7;
-            }
-            total_days++;
-        }
-    }
-
-    return total_days / 7;
-}
-
 int main() {
+    // 입력 받기
     int m1, d1, m2, d2;
-    string start_day;
+    string day_of_week;
+    cin >> m1 >> d1 >> m2 >> d2 >> day_of_week;
 
-    cin >> m1 >> d1 >> m2 >> d2;
-    cin.ignore(); // Ignore the newline character
-    getline(cin, start_day);
+    // 시작일과 종료일 설정
+    struct tm start_date = {0, 0, 0, d1, m1 - 1, 2024 - 1900};
+    struct tm end_date = {0, 0, 0, d2, m2 - 1, 2024 - 1900};
 
-    int occurrences = count_occurrences(m1, d1, m2, d2, start_day);
-    cout << occurrences << endl;
+    // 시작일부터 종료일까지의 일수 계산
+    time_t start_time = mktime(&start_date);
+    time_t end_time = mktime(&end_date);
+    double days_difference = difftime(end_time, start_time) / (60 * 60 * 24);
+
+    // A 요일이 등장하는 횟수 계산
+    int count = 0;
+    for (int i = 0; i <= days_difference; ++i) {
+        struct tm* time_info = localtime(&start_time);
+        char buffer[80];
+        strftime(buffer, sizeof(buffer), "%a", time_info);
+
+        if (day_of_week == buffer) {
+            count++;
+        }
+
+        start_time += 24 * 60 * 60; // 다음 날로 이동
+    }
+
+    // 결과 출력
+    cout << count << endl;
 
     return 0;
 }
