@@ -10,7 +10,7 @@ day_of_week = input()
 day_mapping = {'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6}
 target_day = day_mapping[day_of_week]
 
-# 날짜 범위 내에서 요일이 몇 번 등장하는지 계산
+# 시작 날짜를 포함하여 계산하도록 수정
 count = 0
 current_date = start_date
 while current_date <= end_date:
