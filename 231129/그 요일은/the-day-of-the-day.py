@@ -10,13 +10,16 @@ day_of_week = input()
 day_mapping = {'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6}
 target_day = day_mapping[day_of_week]
 
+# 시작 날짜가 목표 요일과 같은 경우, count를 1부터 시작하도록 수정
+count = 1 if start_date.weekday() == target_day else 0
+
 # 시작 날짜를 포함하여 계산하도록 수정
-count = 0
-current_date = start_date
+current_date = start_date + timedelta(days=(target_day - start_date.weekday() + 7) % 7)
+
+# 날짜 범위 내에서 요일이 몇 번 등장하는지 계산
 while current_date <= end_date:
-    if current_date.weekday() == target_day:
-        count += 1
-    current_date += timedelta(days=1)
+    count += 1
+    current_date += timedelta(days=7)
 
 # 결과 출력
 print(count)
