@@ -10,16 +10,14 @@ day_of_week = input()
 day_mapping = {'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6}
 target_day = day_mapping[day_of_week]
 
-# 시작 날짜가 목표 요일과 같은 경우, count를 1부터 시작하도록 수정
-count = 1 if start_date.weekday() == target_day else 0
+# 시작 날짜부터 종료 날짜까지의 주 차이 계산
+week_difference = (end_date - start_date).days // 7
 
-# 시작 날짜를 포함하여 계산하도록 수정
-current_date = start_date + timedelta(days=(target_day - start_date.weekday() + 7) % 7)
+# 시작 날짜의 요일과 목표 요일의 차이
+start_day_difference = (target_day - start_date.weekday() + 7) % 7
 
-# 날짜 범위 내에서 요일이 몇 번 등장하는지 계산
-while current_date <= end_date:
-    count += 1
-    current_date += timedelta(days=7)
+# 결과 계산
+result = week_difference + (start_day_difference <= (end_date.weekday() - target_day))
 
 # 결과 출력
-print(count)
+print(result)
