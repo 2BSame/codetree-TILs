@@ -7,8 +7,8 @@ def final_position(N, moves):
     # 입력받은 이동방향과 거리에 따라 최종 위치 계산
     for direction, distance in moves:
         x, y = directions[direction]
-        dx += x * distance
-        dy += y * distance
+        dx += x * int(distance)
+        dy += y * int(distance)
 
     return dx, dy
 
