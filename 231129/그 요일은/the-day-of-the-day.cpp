@@ -19,10 +19,13 @@ int count_occurrences(int m1, int d1, int m2, int d2, const string& start_day) {
     for (int month = m1; month <= m2; ++month) {
         int end_day = (month != m2) ? days_in_month[month] : d2;
         for (int day = 1; day <= end_day; ++day) {
-            total_days++;
+            if (day == d1 && month == m1) {
+                total_days = (total_days + start_index) % 7;
+            }
             if (total_days % 7 == 0) {
                 start_index = (start_index + 1) % 7;
             }
+            total_days++;
         }
     }
 
