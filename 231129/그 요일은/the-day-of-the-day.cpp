@@ -22,10 +22,11 @@ int main() {
     int count = 0;
     for (int i = 0; i <= days_difference; ++i) {
         struct tm* time_info = localtime(&start_time);
-        char buffer[80];
-        strftime(buffer, sizeof(buffer), "%a", time_info);
+        int day_of_week_number = time_info->tm_wday;
 
-        if (day_of_week == buffer) {
+        // 요일 비교
+        string days[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        if (days[day_of_week_number] == day_of_week) {
             count++;
         }
 
