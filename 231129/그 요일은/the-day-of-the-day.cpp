@@ -26,7 +26,7 @@ int count_occurrences(int m1, int d1, int m2, int d2, const string& start_day) {
         }
     }
 
-    return start_index;
+    return total_days / 7;
 }
 
 int main() {
