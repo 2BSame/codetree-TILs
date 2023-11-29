@@ -8,7 +8,7 @@ int main() {
     int d=11;
     int h=11;
     int m=11;
-    if(a>=d || b>=h || m>=c){
+    if(a>d || b>h || m>c){
     while(true){
         if(a==d&&b==h&&c==m)
         break;
